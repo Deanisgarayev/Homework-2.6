@@ -1,49 +1,43 @@
 package com.skypro.homework26;
 
+import java.util.Objects;
+
 public class Employee {
-    public class Employee {
-        private String fullName;
-        private int department;
-        private int salary;
-        private int id;
-        private static int counter = 1;
+
+        private String firstname;
+
+        private String surname;
 
 
-        public Employee(String fullName, int department, int salary) {
-            this.fullName = fullName;
-            this.department = department;
-            this.salary = salary;
-            this.id = counter++;
-
+        public Employee(String firstname, String surname) {
+            this.firstname = firstname;
+            this.surname = surname;
         }
 
-        public String getFullName() {
-            return this.fullName;
+    public String getFirstname() {
+            return this.firstname;
         }
+    public String getSurname() {
+        return this.surname;
+    }
 
-        public int getSalary() {
-            return this.salary;
-        }
-
-        public int getDepartment() {
-            return this.department;
-        }
-
-        public int getId() {
-            return this.id;
-        }
-
-        public void setDepartment(int department) {
-            this.department = department;
-        }
-
-        public void setSalary(int salary) {
-            this.salary = salary;
-        }
 
         @Override
         public String toString() {
-            return "Имя " + fullName + " Отдел " + department + " Зарплата " + salary;
+            return firstname + " Имя " + surname + "фамилия";
         }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return firstname.equals(employee.firstname) && surname.equals(employee.surname);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstname, surname);
+    }
+
 }
